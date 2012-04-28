@@ -358,7 +358,7 @@ void IP::routePacket(IPDatagram *datagram, InterfaceEntry *destIE, bool fromHL,I
                         IPDatagram * dataAux = datagram->dup();
                         if (dataAux->getSrcAddress().isUnspecified())
                              dataAux->setSrcAddress(ie->ipv4Data()->getIPAddress());
-                        fragmentAndSend(datagram->dup(), ie, IPAddress::ALLONES_ADDRESS);
+                        fragmentAndSend(dataAux, ie, IPAddress::ALLONES_ADDRESS);
                     }
                 }
                 delete datagram;
