@@ -324,16 +324,16 @@ void HostAutoConfigurator2::setupRoutingTable()
         if (!ie)
             continue;
         IPAddress add(ie->ipv4Data()->getIPAddress().getInt() & ie->ipv4Data()->getNetmask().getInt());
-        int i=0;
-        while (i<routingTable->getNumRoutes())
+        int j=0;
+        while (j<routingTable->getNumRoutes())
         {
-            if (routingTable->getRoute(i)->getInterface()==ie)
+            if (routingTable->getRoute(j)->getInterface()==ie)
         	{
-            	routingTable->deleteRoute(routingTable->getRoute(i));
-                i=0;
+            	routingTable->deleteRoute(routingTable->getRoute(j));
+                j=0;
         	}
         	else
-        	    i++;
+        	    j++;
         }
         addRoute(ie,routingTable,add,ie->ipv4Data()->getNetmask());
     }
